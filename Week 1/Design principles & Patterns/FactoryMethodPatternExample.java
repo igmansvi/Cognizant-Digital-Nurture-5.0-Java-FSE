@@ -1,8 +1,17 @@
 public class FactoryMethodPatternExample {
+    /*
+        A document interface with process function
+        - other document classes will implements this
+    */
     interface Document {
         void process();
     }
 
+    /*
+        Multiple document classes
+        - each implements the document and override its function with their version
+        - each class shows a document type to be processed and have same parent contract
+    */
     public static class WordDocument implements Document {
         @Override
         public void process() {
@@ -24,10 +33,19 @@ public class FactoryMethodPatternExample {
         }
     }
 
+    /*
+        Document factory abstract class
+        - it have createDocument() function
+        - will return the required document type object
+    */
     public abstract static class DocumentFactory {
         public abstract Document createDocument();
     }
 
+    /*
+        Multiple document factory
+        - on call will return the particular object type
+    */
     public static class WordDocumentFactory extends DocumentFactory {
         @Override
         public Document createDocument() {
@@ -53,18 +71,22 @@ public class FactoryMethodPatternExample {
     }
 
     public static void main(String[] args) {
+        // wordFactory returns WordDocument
         DocumentFactory wordFactory = new WordDocumentFactory();
         Document wordDocument = wordFactory.createDocument();
         wordDocument.process();
 
+        // pdfFactory returns PdfDocument
         DocumentFactory pdfFactory = new PdfDocumentFactory();
         Document pdfDocument = pdfFactory.createDocument();
         pdfDocument.process();
 
+        // excelFactory returns ExcelDocument
         DocumentFactory excelFactory = new ExcelDocumentFactory();
         Document excelDocument = excelFactory.createDocument();
         excelDocument.process();
 
+        // Output: Single base class factory returns all document type object and hides creational design.
         System.out.println("Completed!");
     }
 }
