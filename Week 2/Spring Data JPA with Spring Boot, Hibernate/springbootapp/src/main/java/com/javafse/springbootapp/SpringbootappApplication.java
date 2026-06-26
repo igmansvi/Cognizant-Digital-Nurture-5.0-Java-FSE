@@ -11,6 +11,9 @@ public class SpringbootappApplication {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpringbootappApplication.class);
 
 	public static void main(String[] args) {
+		/*
+			Verfies Logger works!
+		*/
 		SpringApplication.run(SpringbootappApplication.class, args);
 		LOGGER.info("SpringBoot Application: main()");
 	}

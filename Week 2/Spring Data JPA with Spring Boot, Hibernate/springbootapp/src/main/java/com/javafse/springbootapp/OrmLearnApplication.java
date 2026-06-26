@@ -13,9 +13,15 @@ import com.javafse.springbootapp.service.CountryService;
 
 @SpringBootApplication
 public class OrmLearnApplication {
+    /*
+        Handles the Database calls
+    */
     private static CountryService countryService;
     private static final Logger LOGGER = LoggerFactory.getLogger(SpringbootappApplication.class);
 
+    /*
+        Defines application context, gets CountryService bean and runs it.
+    */
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(OrmLearnApplication.class, args);
 
@@ -24,6 +30,9 @@ public class OrmLearnApplication {
         testGetAllCountries();
     }
 
+    /*
+        Process all country data from database, prints using Logger slf4j
+    */
     public static void testGetAllCountries() {
         LOGGER.info("Processing country data...");
         List<Country> countries = countryService.getAllCountries();
